@@ -1,23 +1,24 @@
-# Fast Floward | Week 2 | Day 5
+# Flow 快速入门 | 第 2 周 | 第 5 天
 
-Wow. You've made it almost an entire week with me. You must be so happy you're almost done with me... psych! We have all of Week 3 together. Anyways, let's conclude Week 2. There is no new content this week. Instead, there is 1 quest to bring together everything you've learned on DappStarter. You've done a great job already, so let's wrap things up and enjoy the weekend.
+哇！你和我一起度过了几乎整整一个星期。你一定很高兴你几乎和我分手了。。。心理！第三周我们都在一起。无论如何，让我们结束第 2 周。
+本周没有新内容。取而代之的是，这里有一个任务，就是把你在 DappStarter 上学到的所有东西结合起来。你已经做得很好了，让我们总结一下，好好享受这个周末吧。
 
-# Videos
+# 视频
 
-There are no videos for today.
+今天没有视频
 
-# Quests
+# 任务
 
-I have one quest for you today, `W2Q8`.
+我今天有个任务给你, `W2Q8`.
 
-- `W2Q8` – Let the Skills Loose!
+- `W2Q8` – 让技能释放
 
-For this quest, well, I want you to get creative. Now that you have been through all the steps of DappStarter (modifying contracts, transactions, scripts, dapp-lib.js, making action cards, and creating tests) I want you to set out on an adventure and make your OWN changes.
+为了这个任务，我希望你有一些创意。现在你已经完成了 DappStarter 的所有步骤（修改合约、事务、脚本、dapp-lib.js、制作动作卡和创建测试），我希望你开始一次冒险，并做出自己的更改。
 
-Specifically, I want you to add at least 1 transaction, 1 dapp-lib.js function, 1 action card, and 1 test. I am purposefully being vague here; the goal is to not only test your skills on DappStarter, but also your creativity. It could be literally whatever you want. Your transaction can mint a kitty item and then destroy it, mint 100 kitty items, mint 10000000 kitty items (just kidding, that would take forever). Next week we will begin working on your own projects together, so it is important to practice this creativity step. Also, please feel free to change the contracts if you want to. Spice things up! 
+具体来说，我希望你至少添加 1 个事务、1 个dapp-lib.js 函数、1 个操作卡和 1 个测试。我故意在这里含糊其辞；
+我们的目标不仅是测试你在 DappStarter 上的技能，还包括你的创造力。它可以是你想要的任何东西。你的交易可以造出一个猫咪资产，然后销毁它，造出 100 个猫咪资产，造出 10000000 个猫咪资产（只是开玩笑，那会花很长时间）。下周我们将开始一起做你们自己的项目，所以练习这一创造性步骤很重要。
+此外，如果你愿意，请随时更改合约。增加情趣！
 
-Please submit the pieces of code you add.
+请提交你添加的代码片段。
 
-
-
-Good luck on your quests. See you next time DappStarter legends ~
+祝你任务顺利。下次再见，DappStarter 传奇~

@@ -1,333 +1,355 @@
-# Fast Floward | Week 2 | Day 1
+# Flow 快速入门 ｜ 第二周 ｜ 第一天
 
-Helloooo! Jacob here. You will be stuck with me for the remaining parts of the bootcamp (Weeks 2 and 3). You have probably seen me in the Discord answering questions, so I hope I'm not a total stranger. Although I am not as awesome as Morgan, I hope we can have some fun and learn so much more about Flow/Cadence together.
+嗨咯，我是Jacob。在接下来的时间里（第二周和第三周），由我和大家一起来学习。各位可能已经在讨论区看到我在回答问题，所以希望我不是一个完全陌生的人。虽然我没有Morgan那么厉害，但我希望我们能一起玩得开心，一起学习更多关于Flow/Cadence的知识。
 
-This week, we will wrap up our introduction to the Cadence programming language and begin to explore DappStarter, a platform created by us at Decentology that allows developers like you to get a full-stack dApp running quickly.
+这一周，我会为大家介绍Cadence编程语言，并开始探索由我们在Decentology创造的DappStarter平台，其允许像你们这样的开发者可以快速运转全栈dApp。
 
-You should begin by watching the videos below. The first video will wrap up Cadence concepts by going over Access Control. The second will go over Contract Interfaces and Pre/Post-Conditions. The third video will help you download your first Foundation from DappStarter. Lastly, there is a video covering general DappStarter architecture.
+开始之前，我建议各位先去浏览以下视频。第一个视频通过Access Control带大家了解Cadence的概念。第二个视频会介绍合约接口（Contract Interfaces）以及前/后置条件的内容。第三个视频会教各位如何从DappStarter上下载第一个框架。而最后一个视频涵盖了DappStarter的整体构建情况。
 
-**Please note**: there are a lot of videos to watch today. Because of that, I made your quests much shorter. In fact, you should complete 1/2 of your quests by simply following along the "Getting our DappStarter dApp" video.
+请注意：今天的视频较多，正因为如此，我把减少了其他任务。事实上，只需跟随视频内容"获取我们的DappStarter dApp "就能完成1/2的任务。
 
-# Videos
+# 视频
 
-- [Access Control in Cadence](https://www.youtube.com/watch?v=_CNxRMIrN98)
-- [Contract Interfaces & Post/Pre-Conditions](https://www.youtube.com/watch?v=nONO4MSou5Y)
-- [Getting our DappStarter dApp](https://www.youtube.com/watch?v=-CuH95wtR-I)
-- [DappStarter Architecture Overview](https://youtu.be/scZZiFXfXa4)
+· [Cadence接入控制](https://www.youtube.com/watch?v=_CNxRMIrN98)
 
-# Wrapping up Cadence Concepts
+· [合约接口&前/后置条件](https://www.youtube.com/watch?v=nONO4MSou5Y)
 
-Last week, you went over a ton of Cadence concepts and basic syntax thanks to Morgan. This week we're going to wrap it up, first by covering Access Control and then by going over Contract Interfaces.
+· [获取我们的DappStarter dApp](https://www.youtube.com/watch?v=-CuH95wtR-I)
 
-## Access Control
+· [DappStarter整体概览](https://youtu.be/scZZiFXfXa4)
 
-Access Control describes the way in which we can use things called "Access Modifiers" to increase the security of our smart contracts. 
+# Cadence 概念
 
-Previously, you may have declared all of your variables and functions using the `pub` keyword, like so:
-```cadence
+上一周，Morgan帮助大家了解了很多Cadence的概念以及基本句法。本周我们将继续完善对概念的认识。由接入控制开始，然后是合约接口的内容。
+
+## 接入控制
+
+接入控制也可以用访问控制修饰符（Access Modifiers）来描述，它旨在增强我们智能合约的安全性。
+
+以前你可能像这样使用`pub` 关键词来声明所有变量及函数：
+
+```
 pub let x: Bool
 
 pub fun jacobIsAwesome(): Bool {
-  return true
-}
+	return true
+} 
 ```
 
-But what exactly does `pub` mean? Why are we putting it there? Are there other things we can do instead? I want to answer those questions here.
+但` pub `的实际含义是什么？为什么把它放在这里？是否有其他关键词可以替代它？我接下来就要回答这些问题。
 
-Let's take a look at this diagram to help give us an idea of all the different access modifiers we can use.
+我们来看一下这个图表，它可以帮助我们了解各种可供使用的访问控制修饰符。
 
-![Access Modifiers](images/access_control.png)
+[![hVYubq.png](https://z3.ax1x.com/2021/08/25/hVYubq.png)](https://imgtu.com/i/hVYubq) 
 
-In the video, we only focus on the `var` rows, because `let` does not have a write scope since it is a constant. I encourage you to watch the video before reading over this next section.
+视频中，因为`let` 是常量没有写入scope，所以我们只关注了`var` 段。我推荐大家在阅读下一部分前先观看视频。
 
-Note: [here is the playground from the video.](https://play.onflow.org/2cc441ff-d356-4e36-a45f-715278bd658f?type=account&id=b97af048-15a4-445d-95fe-a31becc2ce41)
+Note: [此链接为视频中平台.](https://play.onflow.org/2cc441ff-d356-4e36-a45f-715278bd658f?type=account&id=b97af048-15a4-445d-95fe-a31becc2ce41)
 
-### Scope
+### 作用域
 
-Scope is the area in which you can access, modify, or call your "things" (variables, constants, fields, or functions). There are 4 types of scope:
+作用域是在运行时代码中的某些特定部分中变量，函数和对象的可访问性，以下是四种作用域类型。
 
-1. All - this means we can access our thing from wherever we want. Inside the contract, in transactions and scripts, wherever.
-2. Current & Inner - this means we can only access our thing from where it is defined and inside of that.
+\1. 自由访问 - 表示我们具备最高访问权限，可以自由访问合约内部、事项及脚本等。
 
-Ex. 
-```cadence
+\2. 当前和内部 - 表示我们只能访问被定义的地方及其内部。
+
+Ex.
+
+```
 pub struct TestStruct {
-  
+
+ pub var x: String
+
+ // The "current and inner scope" for 'x' is here...
+
+ pub fun testFunc() {
+  // and in here.
+ }
+
+ init(){...}
+}
+```
+\3. 合约 - 表示我们可以访问被定义合约内部。
+
+Ex.
+```
+pub contract TestContract {
+
+ // The "containing contract" for 'x' is here...
+
+ pub struct TestStruct {
+
   pub var x: String
 
-  // The "current and inner scope" for 'x' is here...
+  // here...
 
   pub fun testFunc() {
-    // and in here.
+   // and in here.
   }
 
   init(){...}
+ }
 }
 ```
-3. Containing Contract - this means we can access our thing anywhere inside the contract that it is defined.
 
-Ex. 
-```cadence
-pub contract TestContract {
-
-  // The "containing contract" for 'x' is here...
-
-  pub struct TestStruct {
-    
-    pub var x: String
-
-    // here...
-
-    pub fun testFunc() {
-      // and in here.
-    }
-
-    init(){...}
-  }
-}
-```
-4. Account - this means we can access our thing anywhere inside the account that it is defined. Remember: we can deploy multiple contracts to one account.
+\4. 账户 - 表示我们可以访问被定义账户内部，要记住：我们可以将多个合约部署到一个账户中。
 
 ### pub(set)
 
-`pub(set)` only applies to variables, constants, and fields. Functions **cannot** be publically settable. It is also the most dangerous and easily accessible modifier.
+`pub(set)` 仅适用于变量、常量以及field。函数不能公开设置，而且它也是风险最高和最容易获取的。
 
 Ex.
-```cadence
+
+```
 pub(set) var x: String
 ```
 
-Write Scope - **All**
+书写范围 - **全部**
 
-Read Scope - **All**
+阅读范围 - **全部**
 
 ### pub/access(all)
 
-`pub` is the same thing as `access(all)`. This is the next layer down from pub(set).
+`pub` 与`access(all)`类似。这是`pub(set)`下一层级。
 
 Ex.
-```cadence
+
+```
 pub var x: String
 access(all) var y: String
-
+ 
 pub fun testFuncOne() {}
 access(all) fun testFuncTwo() {}
 ```
 
-Write Scope - Current & Inner
+书写范围 - **当前及内部**
 
-Read Scope - **All**
+阅读范围 - **全部**
 
 ### access(account)
 
-`access(account)` is a little more restrictive than `pub` due to its read scope.
+`access(account) `由于其阅读范围的性质，较 `pub` 有更多限制.
 
 Ex.
-```cadence
+
+```
 access(account) var x: String
 
 access(account) fun testFunc() {}
 ```
 
-Write Scope - Current & Inner
+书写范围- **当前及内部**
 
-Read Scope - Account
+阅读范围 - **账户内**
 
 ### access(contract)
 
-`access(contract)` is a little more restrictive than `access(account)` due to its read scope.
+`access(contract) `由于其阅读范围的性质，较`access(account) `有更多限制。
 
 Ex.
-```cadence
+
+```
 access(contract) var x: String
+
+ 
 
 access(contract) fun testFunc() {}
 ```
 
-Write Scope - Current & Inner
+书写范围 - **当前及内部**
 
-Read Scope - Containing Contract
+阅读范围 - **合约**
 
-### priv/access(self)
+### priv/access（self）
 
-`priv` is the same thing as `access(self)`. This is the most restrictive (and safe) access modifier.
+`priv` 与 `access(self)`相同。这是限制最高（同时安全）的范围控制符。
 
 Ex.
-```cadence
+
+```
 priv var x: String
+
 access(self) var y: String
 
 priv fun testFuncOne() {}
+
 access(self) fun testFuncTwo() {}
 ```
 
-Write Scope - Current & Inner
+书写范围 - **当前及内部**
 
-Read Scope - Current & Inner
+阅读范围 - **当前及内部**
 
-## Contract Interfaces
+### 合约接口
 
-I know, I know. More Cadence. Ugh. We're almost done... just kidding! We will be stuck with Cadence for 2 more weeks, so we might as well keep going. :)
+我知道，需要更多Cadence的内容，我们几乎要完成了，开个玩笑！我们接下来两周以上的时间都将会和Cadence打交道，所以我们还会继续学习。:)
 
-Contract interfaces are very similar to what we learned last week with resources. They are a little different, though, and it will appear in some examples this week, so let's go over it quickly (don't worry, it's not that bad).
+合约接口和我们上周学过的资源非常类似，但还是稍有不同。本周部分示例中会出现它，我们快点来看一看吧（不用担心，不会很难）
 
-Let's define a sample contract interface:
+我们来定义一个简单的合约接口:
 
-```cadence
+```
 pub contract interface TestContractInterface {
-  pub let x: Int
+ pub let x: Int
 
-  pub fun readX(): Int {
-    post {
-      result == self.x:
-        "The result is not equal to x. That's a problem."
-    }
+ pub fun readX(): Int {
+  post {
+   result == self.x:
+​    "The result is not equal to x. That's a problem."
   }
+ }
+ 
+ pub resource interface INFT{
+  pub let y: Int
+ }
 
-  pub resource interface INFT{
-    pub let y: Int
-  }
-
-  pub resource NFT: INFT {
-    pub let y: Int
-  }
+ pub resource NFT: INFT {
+  pub let y: Int
+ }
 }
 ```
 
-There's multiple things going on here. First, we've defined a constant named `x`, a function named `readX`, a resource interface named `INFT`, and a resource named `NFT` that implements the `INFT` resource interface. But what is this doing? What's the point here?
+这里要做很多事情，首先我们要定一个叫`x`的常量、一个叫`readX`的函数、一个叫`NFT`的资源，其用于实现`INFT`资源接口。 但是这样是要做什么呢？此处的重点是什么？
 
-Well, we can use this contract interface to require other contracts to implement its fields, functions, variables, and constants. Let's use our example from above:
+我们可以使用该合约接口来要求其它合约实现其field、函数、变量和常量。我们举一个上面的例子：
 
-```cadence
+```
 import TestContractInterface from './TestContractInterface'
 pub contract TestContract: TestContractInterface {
-  pub let x: Int
+ pub let x: Int
 
-  pub fun readX(): Int {
-    return self.x
-  }
+ pub fun readX(): Int {
+  return self.x
+ }
 
-  pub resource NFT: TestContractInterface.INFT {
-    pub let y: Int
-
-    init() {
-      self.y = 1
-    }
-  }
+ pub resource NFT: TestContractInterface.INFT {
+  pub let y: Int
 
   init() {
-    self.x = 0
+   self.y = 1
   }
+ }
+
+ init() {
+  self.x = 0
+ }
 }
 ```
 
-As you can see, we had to define an `x` constant, a `readX` function that returns `x`, and a resource named `NFT` that implements `TestContractInterface.INFT` and has field named `y`. Note that `NFT` MUST be named "NFT" or we will receive an error. Similarly, we cannot define our own `INFT` resource interface in `TestContract`. We MUST have `NFT` implement `TestContractInterface.INFT` because that is how `TestContractInterface` is written.
+如您所见，我们需要定义` x `常量、返回`x`的`readX`函数，用以实现`TestContractInterface.INFT` 的`NFT`资源以及名为`y`的field。要注意的是，`NFT `必须命名为 "NFT" ，否则我们会收到错误报告。同样地，我们无法在`TestContract` 中定义我们自己的`INFT`资源接口。此外，由于`TestContractInterface`的书写方式，我们必须用`NFT`实现`TestContractInterface.INFT`。
+## 前置条件和后置条件附注
 
-## A Side Note on Pre-Conditions & Post-Conditions
+在上述例子中，可以看到我们使用了一个后置条件。这在合约接口中经常使用，但你也可以在正常合约中看到它们。它们被用作额外的安全层级或是表达意图的一种方式，并且其确保了合约函数的相应功能。
 
-In the example above, you can see we used a **post-condition**. These are most often used in contract interfaces, but you will see them in normal contracts as well. They are both used as an extra security layer and as a means of expressing intent; it makes sure contract functions behave accordingly.
+我们看一下上面这个例子：
 
-Let's look at the above example:
-
-```cadence
+```
 pub contract interface TestContractInterface {
-  pub let x: Int
+ pub let x: Int
 
-  pub fun readX(): Int {
-    post {
-      result == self.x:
-        "The result is not equal to x. That's a problem."
-    }
+ pub fun readX(): Int {
+  post {
+   result == self.x:
+​    "The result is not equal to x. That's a problem."
   }
+ }
 
-  {...}
+	{...}
 }
 ```
 
-The post condition here is being used to make sure that whoever implements `TestContractInterface` MUST have a function named readX that returns `self.x`. Not any other value.
+此处的后置条件用于确保实现`TestContractInterface`必须有返回`self.x.`名为readX的函数，而非其他值。
 
-Similarly, **pre-conditions** are used to check conditions are met before a function even excecutes. Here's an example:
+同样，前置条件用于在一个函数执行之前检查条件是否满足。例子如下：
 
-```cadence
+```
 pub contract TestContract {
 
-  {...}
+ {...}
 
-  pub fun deposit(amount: Int): Int {
-    pre {
-      amount > 0:
-        "We do not want to deposit any value equal to or below 0."
-    }
-
-    {...}
+ pub fun deposit(amount: Int): Int {
+  pre {
+   amount > 0:
+​    "We do not want to deposit any value equal to or below 0."
   }
 
   {...}
+ }
+
+ {...}
 
 }
 ```
 
-In this example, assume we are depositing into our Vault. We want to make sure we don't accept an amount equal to or below 0 or it wouldn't make sense. We can do this using a **pre-condition**. It's important to describe why this is so useful:
-1) Developer Intent - Any person calling deposit knows amount must be > 0.
-2) Saves Time & Resources - If an amount <= 0 is deposited, we will save a ton of time by reverting the call immediately.
-3) Extra Layer of Security - We prevent harmful/malicious acts on our own Vaults.
+在这个例子中，假设我们正在向我们的Vault存款。我们要确保不接受等于或低于0的金额，否则就没有意义了。我们可以使用一个前置条件来做到这一点。我来描述一下为什么这一点如此有用。
 
-# Intro to DappStarter
+1.开发人员意图 - 任何调用存款的人都知道金额必须>0。
 
-You can find DappStarter here: https://dappstarter.decentology.com/
+2.节省时间和资源 - 如果存款金额<=0，我们将立即恢复调用来节省时间。
 
-Before reading this section, make sure to watch the associated video above. This section will go over some terminology we use for things you'll encounter in DappStarter so it will make sense for upcoming days.
+3.额外安全层 - 防止我们的Vault受到有害/恶意的行为。
+
+# Dappstarter介绍
+
+您可以通过此链接获取DappStarter: https://dappstarter.decentology.com/
+
+在阅读本节之前，请确保先观看上面的视频。本节将介绍我们在DappStarter中遇到的一些术语，以便对接下来的学习有所了解。
 
 ## Action Cards
 
-![Transaction Action Card](images/transaction_action_card.png)
-*An example of an action card that sends a transaction*
+[![hVYmKs.png](https://z3.ax1x.com/2021/08/25/hVYmKs.png)](https://imgtu.com/i/hVYmKs) 
 
+*Action Cards发送交易的示例*
 
-![Script Action Card](images/script_action_card.png)
-*An example of an action card that executes a script*
+[![hVYnrn.png](https://z3.ax1x.com/2021/08/25/hVYnrn.png)](https://imgtu.com/i/hVYnrn) 
 
+*Action Cards执行脚本示例*
 
-Action cards are used to run transactions and scripts on the UI Harness. They each have different **widgets** inside them so we can pass parameters to our transactions and scripts. This can be very useful, because we no longer have to type out crazy json-formatted stuff into our command line. Instead, we can easily select accounts, insert numbers, etc.
+Action Card是用来运行UI Harness上的事务和脚本的。其内部含有不同的部件，以向事务和脚本传递参数，这是非常有用的，因为我们不再需要在命令行中输入JSON格式的东西，相反，我们可以轻松地选择账户、输入数字等等。
 
-The action cards that have an orange Submit button on them send transactions to the blockchaiin. Action cards that have a green View button execute scripts.
+Action Card上有橙色提交（Submit）按钮的，可以将交易发送至区块链中。有绿色查看（View）按钮的则用来执行脚本。
 
-## Widgets
+## 部件
 
-**Widgets** are the pieces of UI we use to select parameters inside our **action cards**. There are two main types of widgets you should know:
+部件（Widget）是我们用来在Action Card中选择参数的UI部分，有两种主要类型的部件是你应该了解的：
 
-![Account Widget](images/account_widget.png)
+[![hVYV2Q.png](https://z3.ax1x.com/2021/08/25/hVYV2Q.png)](https://imgtu.com/i/hVYV2Q) 
 
-*An example of an account widget*
+*账户部件示例*
 
-1) Account widgets - these widgets allow you to select an account. We can use these to select signers, recipients of a transfer, etc.
+\1. 账户部件 - 可以让您选择账户，我们可以使用它选择签字人及受让人等等。
 
-![Text Widget](images/text_widget.png)
+[![hVYE8g.png](https://z3.ax1x.com/2021/08/25/hVYE8g.png)](https://imgtu.com/i/hVYE8g) 
 
-*An example of an account widget*
+*账户部件示例*
 
-2) Text widgets - these widgets allow us to type in numbers. We can use these to put in an amount, a price for our Kitty Items, etc. 
+\2. 文本部件- 输入数字。我们可以用其输入金额，Kitty Item价格等。
 
-*Note*: in any text widgets that have an "Amount" label, you MUST use numbers that have a decimal. For example, if you want to input 30, you have to put 30.0. This is because "Amount" takes in Fixed numbers, not Integers.
+注意：在任何有 "金额 "标签的文本部件中，数字须精确到小数位。例，如果你想输入30，则必须输入30.0。这是因为 "金额"输入要求的是固定精确数字，而不是整数。
 
-# Quests
+# 任务
 
-For day one, we have two quests: `W2Q1` and `W2Q2`. These quests will be pretty short because I know I'm throwing a lot at you today. 
+第一天我们共有两个任务，详见W2Q1 和 W2Q2。这两个任务并不复杂，我知道大家今天已经接受很多知识了。
 
-These quests also won't cover contract interfaces or post/pre-conditions because I don't want to overwhelm you. I will be here right alongside you to help whenever and wherever you need. If you need assistance while solving these, feel free to ask questions on Discord in the **burning-questions** channel or reach out to me in a DM if need be. You got this!!
+这些任务不包括合约接口以及前后置条件的内容，我不想让你们压力过大。有需要随时随地都可以找我，我与你们同在。大家需要帮助的时候，可以随意在Discord里面的**burning-questions**频道提问，或者在DM中搜索我也可以！
 
-- `W2Q1` – Access Control Party
+· W2Q1 – Access Control Party
 
-Look at the w2q1 folder. For this quest, you will be looking at 4 variables (a, b, c, d) and 3 functions (publicFunc, privateFunc, contractFunc) defined in some_contract.cdc. You will see I've marked 4 different areas (#1, #2, #3 in some_contract.cdc, and #4 in some_script.cdc) where I want you to answer the following task: For each variable (a, b, c, and d), tell me in which areas they can be read (read scope) and which areas they can be modified (write scope). For each function (publicFunc, contractFunc, and privateFunc), simply tell me where they can be called.
+请看w2q1文件夹。在这个任务中，你将会看到在some_contract.cdc中定义的4个变量（a、b、c、d）和3个函数（publicFunc、privateFunc、contractFunc）。可以看到我已经标记了4个不同的地方（some_contract.cdc中的#1、#2、#3，以及some_script.cdc中的#4），我希望你能回答以下任务。对于每个变量（a、b、c和d），告诉我它们在哪些区域可以被读取（读取范围），哪些区域可以被修改（书写范围）。对于每个函数（publicFunc、contractFunc和privateFunc），简述它们可以在哪里被调用。
 
-Ex. In Area 1:
-1. Variables that can be read: a and c.
-2. Variables that can be modified: d.
-3. Functions that can be accessed: publicFunc and privateFunc
-Note: this is very wrong ^, haha!
+例如. 在区域1中:
 
-- `W2Q2` – Dappiness
+\1. 可读取的变量: a 和 c.
 
-For this quest, follow the [Getting our DappStarter dApp](https://www.youtube.com/watch?v=-CuH95wtR-I). Get the Fast Floward Foundation on DappStarter and attempt to run your project as instructed in the video. If you can `yarn start`, see the UI Harness, and submit all the Day 1 **action cards**, you are done! Simply submit a screenshot of the return values on the action cards :)
+\2. 可修改的变量: d.
 
-Best of luck on your quests, you got this. See you next time Cadence adventurers ~
+\3. 可获取的函数: publicFunc 和 privateFunc 注意: 这是错误答案 ^, 哈哈!
+
+· W2Q2 – Dappiness
+
+请按照 [Getting our DappStarter dApp](https://www.youtube.com/watch?v=-CuH95wtR-I) 完成该项任务。在DappStarter上获取Fast Floward Foundation，并尝试按照视频中的指示运行你的项目。如果你能 `yarn start`，看到UI Harness，并提交所有第1天的Action Card，就完成任务了! 只需提交Action Card上返回值的截图即可 :)
+
+祝各位一切顺利，Cadence冒险者们，我们下次再见~
+
+ 
