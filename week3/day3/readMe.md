@@ -1,45 +1,54 @@
-# Fast Floward | Week 3 | Day 3
+# Fast Floward | 第3周 | 第3天
 
-Heyoooooooooooo. Jacob reporting in for another super awesome and fun day of Fast Floward content. Today, we will be using what we've learned about Cadence, DappStarter, and Composability to start making our own composability modules. We will have lengthy discussions in the Discord and Office Hours over the next few days to help you in your implementation. Let's have some fun with this and work through this together to make something great.
+嗨，Jocob又添加了一些新的内容。今天，我们将会用我们之前已经学到的关于Cadence, DappStarter和可组合性（Composability）来实现我们自己的可组合性模块。在接下来的几天里，我们将会在Discord和Office Hour里为你提供帮助。现在，我们开始今天的挑战。
 
-# Videos
+# 视频
 
 There are no videos for you to watch today. Instead, we will be having a conversation about developing our own composability modules in office hours.
 
-Office Hours video - https://www.youtube.com/watch?v=vNVr3c7N9RQ
+今天将不会有视频。但对应的，我们将会在Office Hour中讨论有关可组合性模块的开发。
 
-# Developing our Own Composability Modules
+Office Hours视频链接 - https://www.youtube.com/watch?v=vNVr3c7N9RQ
 
-The past two days we have discussed Composability and how we (the Decentology team) have been approaching a technical implementation of Composability on Flow. Over the next 3 days, we will be working with 1 Quest to actually make our own Composability modules. 
+# 开发我们自己的可组合性模块
 
-As a result, there won't be any "new" content today. Instead, we will use a more open-ended quest to stimulate conversation around composability, which should serve as a great learning experience.
+在过去的两天中，我们讨论了可组合性以及我们是如何在Flow上实现可组合性。在接下来的3天中，我们将会通过一个任务来真正打造我们自己的一个可组合模块。
 
-Before you read the quest, I want to make it clear that this isn't something to be scared or stressed about. This quest is designed to allow you to explore your own creative ideas and to have some fun making a full dApp on your own. If you need any help along the way, the Discord & Office Hours are there for you. If you struggle along the way or don't have the time to finish before the week is over, *that is completely fine.* All I want to see is that you put in a good amount of effort and that you had some fun with it. This stuff is hard. So let's do our best and that's perfect enough.
+因此，今天并不会有“新”内容。取而代之的，我们将会用一个开放性的任务来激烈大家讨论关于可组合性，这对我们的学习也有帮助。
 
-# Quests
 
-As introduced earlier, there is 1 remaining quest for you for this bootcamp. As you might expect, it will take some time and will most likely take you more than just a day. 
+在开始阅读任务之前，我想先声明一下，不要被这个任务吓到或者感到压力。这个任务是用来让你发现你自己创造性的想法，和享受在搭建你自己的dApp时的快乐。如果你需要帮助，Discord & Office Hours是非常好的选择。如果你觉得有点困难或者没有时间自这周末之前完成任务，*这完全没有问题。* 我想看到的仅仅是你投入了你的努力，并且你在做的过程中感到有趣。这个确实是很难的。所以，尽你所能就已经非常不错了。
 
-- `W3Q3` – Developing our Own Composability Module
 
-For this quest, I want you to try and develop your own composability module. I have provided a DappStarter skeleton project for you to begin your quest. You can find that here: https://github.com/decentology/ff-empty-registry-demo. Inside it are both the RegistryService and RegistryInterface along with all the transactions, scripts, DappLib functions and UI Harness that go along with it. Your job is to think of your own composability modules using DappStarter. This is not an easy task, so we are giving you as long as you need to do it. We will not be introducing any quests over the next 3 days of the bootcamp, so you can try and complete it in that amount of time.
+# 任务
 
-To clarify: What I mean by a Composable Module is making some sort of RegistryContract inside your Project/ contract folder. You'll see I already put a blank one there for you with some setup already to help you. Remember from the last two days that an example RegistryContract is the RegistryNFTContract that handles the composability of NFTs. Your job will be coming up with a different idea for composability or choosing from the list below.
+就像之前介绍的，这个训练营还有最后一个任务。正如你期待的，这个任务会花点时间，很有可能会需要超过一天的时间。
 
-Next, I would like you to come up with at least 1 Calling Contract/Composed Contract that uses the Registry Contract. This is the equivalent of the MarketplaceContract in the demo repo you've been working with. Put this Composed Contract inside your Project/ contracts folder. You will then have to write the transactions, scripts, UI Harness, & DappLib functions that interact with your contracts to complete the module.
+- `W3Q3` – 开发你自己的可组合性模块
 
-Here is a list of composability ideas to work from. They range from easy to hard. You do not have to use this list, but it may be helpful if you're having trouble thinking of composability examples.
+针对这个任务，我想让你尝试开发你自己的可组合性模块。为了让你更好的开始这个任务，我为你提供了DappStarter项目框架。你可以在这里找到：https://github.com/decentology/ff-empty-registry-demo 这里有RegistryService和RegistryInterface，以及相对应的所有的transactions，scripts，DappLib function以及UI Harness。你的工作室思考用DappStarter搭建你自己的可组合木块。这并不是一个简单的任务，你想用多长时间完成就用多长时间完成。在接下来训练营的三天时间里，我们不会在给出任何其他的任务了，所以你可以利用这段时间完成这个任务。
 
-Example Composability Module | Difficulty | Description
+澄清一下：当我说可组合模块的时候，我指的是在你的Project/合约文件夹中加入RegistryContract。你将会看到，我已经放了一个有一点点内容的空白文件在那里。别忘了，在我们前两天的学习中，那个范例RegistryContract是用来处理所有NFTs可组合性的RegistryNFTContract。你的任务是想出另一个做可组合性的点子，或者从下面的几个挑选。
 
-1) **FungibleToken** | *Easy* | Just like the RegistryNFTContract you saw during Week 3 Days 1&2, try and make a RegistryFTContract. Then, define a Composed Contract/Calling Contract that actually uses this RegistryFTContract in your Project/ folder.
-2) **NFT Metadata on IPFS** | *Easy-Medium* | Define a RegistryNFTIPFSContract that is very similar to the RegistryNFTContract we've been working with, but there is an added field to the NFT Resource that handles storing metadata in the form of an IPFS hash. You can think of this as an extension of normal NFTs that specifies how metadata is stored. You can make your Calling Contract whatevere you'd like, but an example could be a marketplace, etc.
-3) **Multiple Approval/Multi Sig** | *Medium* | Come up with some system where a user defines something that requires multiple signature/approval from pre-defined accounts. Example: I want to make a proposal that needs approval from accounts with address 0x0, 0x1, 0x2, and 0x3. I specify this on the proposal, and then those addresses will have to individually approve my proposal. Once X amount of them (or all of them) have signed, something happens.
-4) **Video Game Assets** | *Medium* | Define a standard for video game assets. Think about taking an item you've earned in Mario Kart and transferring that to Legend of Zelga. There needs to be a standard for this resource in order to use your video game assets in multiple games. Implement this video game asset yourself by brainstorming fields your resource may have, how it should be traded back and forth, etc. Your Calling Contract could then act as a secondary marketplace, a trading platform, etc.
-5) **Voting** | *Medium-Hard* | Define a RegistryVotingContract that handles Voting on the Flow blockchain. There could be many different versions of this depending how you interpret "voting." It could be a system where there is a proposal initiated by an Admin and each address can only vote once, or it could be a ballot-type voting where users vote on ballots, etc. This is really up to you to decide. Then define your own Calling Contract that uses this Voting in some way.
+下面，我想让你做出至少一个用到Registry合约的调用合约/组合合约。这和在示例中你用过的MarketplaceContract合约是一样的。把这个组合合约放进你的Project/合约文件夹中。接下来，为了完成这个模块，你需要写出和你的合约有交互的transactions, scripts, UI Harness, & DappLib functions。
 
-These are 5 ideas you can work with. There are an infinite amount of ideas you could potentially come up with. I am also being purposefully vague in my descriptions to allow you to be creative in the best way that you can. Remember, this stuff might not make sense at first and will be confusing over the next few days. But let's use this as an opportunity to open a discussion about how you want to approach this quest, I think you'll be able to learn more that way.
 
-Additionally, I have created a channel named #composability-discussion. Let's chat about any comments, questions, or ideas you may have! You can also use this to share ideas with each other to create your composability modules :)
+下面是一些可组合性的点子，从简单到困难。你并不是必须从下面的列表中选，但如果你在自己想可组合型例子遇到了困难，下面的这些点子也许会有所帮助。
 
-Good luck on your journey. See you next time Composability adventurers ~
+可组合性模块示例  | 难度 | 介绍
+
+1) **同质化代币** | *简单* | 就像你在第三周第一二天看到的RegistryNFTContract，尝试写一个RegistryFTContract。然后定义一个使用了你Project/文件夹中RegistryFTContract的调用合约/组合合约。
+
+2) **IPFS上的NFT元数据** | *简单-中等* | 写一个和我们之前用到过的RegistryNFTContract类似的RegistryNFTIPFSContract，但是，这里会在NFT Resource新增加一快用来存储元数据，也就是IPFS的哈希值。你可以把这理解为，普通的NFT的一种扩展，明确指明元数据是如何存储的。调用合约你想怎么写就怎么写，不过一个例子可以是一个交易平台，等等。
+
+3) **多重许可/多重签名** | *中等* | 试着做用户需要从预声明的账户中多重签名/许可的一套系统，比如：我想提一个方案，但这个方案需要下面4个账户的许可：0x0, 0x1, 0x2, and 0x3。我在我的方案中预先明确表示出来，接下来，这其中的每一个地址都需要许可我的方案。一旦某些（或全部）账户都签名了，就会发生某些事情。
+
+4) **游戏资产** | *中等* | 定义一个游戏资产的标准。想象一下，把一件你从马里奥赛车中的赢得的资产转到塞尔达传说。这就必须要有一个resource的标准，才能让你的游戏资产在多个游戏中使用。做一个这样的游戏资产，头脑风暴一下，这个resource都有哪些信息，它能被如何交易，等等。你的调用合约可以作为一个二级市场或者一个交易市场，等等。
+
+5) **投票** | *中等-难* | 定义一个在Flow链上处理投票的RegistryVotingContract。根据你如何理解“投票”，可以有好多不同的版本。可以是，由Admin提出提案，然后每个地址只能投票一次，也可以是“选票制”，用户可以用选票来投票，等等。这个完全由你来决定。然后你来定义你想如何使用这个调用合约。
+
+这里一共有5个点子供你使用。当然你也可以想出无数个点子。我是故意模糊我这些点子的描述，从而让你可以尽可能的更有创造性。记住，可能在开始和下来的几天里，你都会非常困惑。但我们也可以一起讨论你想如何做这个任务，我想这样你也一定能学到很多。
+
+另外，我创建了一个叫做#composability-discussion的频道。如果你有任何意见，问题，想法，我们都可以在那讨论！你可以利用这个频道和其他人分享你的点子来构建你的可组合性模块。
+
+祝好运，下次见！
